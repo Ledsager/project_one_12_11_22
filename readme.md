@@ -1,4 +1,4 @@
-# Project one
+# Project
 
 ## Условие задачи
 
