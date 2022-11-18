@@ -2,7 +2,8 @@
 
 ## Команда
 
-### Состав:
+### Состав
+
 * Роман И.Б.
 * Абдулаев З.И.
 * Якупов Р.А.
@@ -22,7 +23,6 @@
 * save_data_exchange_log
 * data_output_somewhere
 * main_exchange
-
 
 ***
 
