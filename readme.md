@@ -22,7 +22,7 @@
 * save_data_exchange_log
 * data_output_somewhere
 * main_exchange
-* ваши предложения
+
 
 ***
 
@@ -74,6 +74,4 @@
 
 ## Блок схема
 
-![Блок схема](File.JPG)
-
-
+![Блок схема](блок схема.jpg)
