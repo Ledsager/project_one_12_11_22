@@ -23,6 +23,7 @@
 * save_data_exchange
 * save_data_exchange_log
 * data_output_somewhere
+* data_viewer_output
 * main_exchange
 
 ***
@@ -36,6 +37,7 @@
 |save_data_exchange      |Имя        |               |
 |save_data_exchange_log  |Имя        |               |
 |data_output_somewhere   |Имя        |               |
+|data_viewer_output      |Имя        |               |
 |main_exchange           |Имя        |               |
 ||||
 
@@ -67,7 +69,10 @@
 5. data_output_somewhere
     * Метод представления информации пользователю. (на перспективу: вывод напрямую в телеграм(бот))      
     * функция переменная содержание
-6. main_exchange
+6. data_viewer_output
+    * Вывод информации пользователю.      
+    * функция переменная содержание
+7. main_exchange
     * Тело программы    
     * функция переменная содержание    
 
