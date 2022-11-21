@@ -7,13 +7,12 @@ import pathlib
 # from datetime import datetime as dt
 
 
-# def get_save_data_exchange(data):
-# # print("Время запроса информации: " +
-# #                     (now.strftime("%Y-%m-%d")) + (now.strftime('%H:%M')))
-# # print(calls_df)
-#    print(data)
-
-#    print(data.to_csv("save_data_exchange.csv", index=False))
+def get_save_data_exchange_test(data):
+# print("Время запроса информации: " +
+#                     (now.strftime("%Y-%m-%d")) + (now.strftime('%H:%M')))
+# print(calls_df)
+# print(data)
+   print(data.to_csv("save_data_exchange_test.csv", index=False))
 
 def a_save_data(data,header_file_csv=None):
    if header_file_csv==None:
