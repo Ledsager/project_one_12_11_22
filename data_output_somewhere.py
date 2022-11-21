@@ -5,4 +5,4 @@ def data_output_somewhere():
     quality = 1
     convert = amount*currency_course/quality
     return convert
-re.data_processing_request()
+# re.data_processing_request()
