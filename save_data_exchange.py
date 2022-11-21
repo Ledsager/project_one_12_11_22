@@ -41,6 +41,7 @@ def get_save_data_exchange(data):
    #      ['Узбекский сум', 53.8661, 'UZS', 10000],
    #      ['Азербайджанский манат', 35.5142, 'AZN', 1]
    #  ]
+
    # i=0
    # for list_element in data:
    #    if i==0:
@@ -51,6 +52,7 @@ def get_save_data_exchange(data):
 
 
    header_file_csv = ['Валюта', 'Курс', 'Код', 'Единиц']
+
    print(data)
 
    path = pathlib.Path('save_data_exchange.csv')  # путь к файлу
@@ -66,4 +68,6 @@ def get_save_data_exchange(data):
    else:
       a_save_data(data,header_file_csv)
 
+
 # # get_save_data_exchange()
+
