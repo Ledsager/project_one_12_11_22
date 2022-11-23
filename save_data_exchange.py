@@ -3,25 +3,16 @@ import csv
 from datetime import datetime as dt
 import pathlib
 
-# import pandas as pd
-# from datetime import datetime as dt
 
-
-def get_save_data_exchange_test(data):
-# print("Время запроса информации: " +
-#                     (now.strftime("%Y-%m-%d")) + (now.strftime('%H:%M')))
-# print(calls_df)
-# print(data)
-   print(data.to_csv("save_data_exchange_test.csv", index=False))
-
-def a_save_data(data,header_file_csv=None):
-   if header_file_csv==None:
-      with open("save_data_exchange.csv", 'a', newline='', encoding='utf-8') as f:
+def a_save_data(data, path, header_file_csv=None):
+   if header_file_csv == None:
+      print (path)
+      with open(path, 'a', newline='', encoding='utf-8') as f:
          writer = csv.writer(f)
          writer.writerows(data)
          writer.writerow('')
    else:
-      with open("save_data_exchange.csv", 'a', newline='', encoding='utf-8') as f:
+      with open(path, 'a', newline='', encoding='utf-8') as f:
          writer = csv.writer(f)
          writer.writerow(header_file_csv)
          writer.writerows(data)
@@ -40,19 +31,33 @@ def get_save_data_exchange(data):
       else:
          list_element.insert(0, '')
       i+=1
-   header_file_csv = ['Дата', 'Валюта', 'Курс', 'Код', 'Единиц']
-
-   path = pathlib.Path('save_data_exchange.csv')  # путь к файлу
+   # if len(data_exchange[0])>3:
+   #    header_file_csv = ['Дата', 'Валюта', 'Курс', 'Код', 'Единиц']
+   # else:
+   #    header_file_csv = ['Код валюты', 'Курс']
+   if len(data_exchange[0]) > 3:
+      path = pathlib.Path('save_data_for_html.csv')  # путь к файлу
+      path_csv="save_data_for_html.csv"
    # проверка существование файла
-   if path.exists(): 
-      with open("save_data_exchange.csv",'r', encoding='utf-8') as f:
-         header = f.readline()
-         # print(header)
-      if header == ('Дата,Валюта,Курс,Код,Единиц\n'):
-         a_save_data(data_exchange)
-      else:
-         a_save_data(data_exchange,header_file_csv)
+      a_save_data(data_exchange, path_csv)
    else:
-      a_save_data(data_exchange,header_file_csv)
+      path = pathlib.Path('save_data_for_api.csv')  # путь к файлу
+      path_csv="save_data_for_api.csv"
+      # проверка существование файла
+      a_save_data(data_exchange, path_csv)
+
+   # path = pathlib.Path('save_data_exchange.csv')  # путь к файлу
+   # проверка существование файла
+   # if path.exists():
+   #    a_save_data(data_exchange)
+   #    with open("save_data_exchange.csv",'r', encoding='utf-8') as f:
+   #       header = f.readline()
+   #       # print(header)
+   #    if header == ('Дата,Валюта,Курс,Код,Единиц\n'):
+   #       a_save_data(data_exchange)
+   #    else:
+   #       a_save_data(data_exchange,header_file_csv)
+   # else:
+   #    a_save_data(data_exchange,header_file_csv)
 
 # # get_save_data_exchange()
