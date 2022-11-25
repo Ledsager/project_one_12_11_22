@@ -11,6 +11,7 @@ from tkinter import *
 def exchange_html():
     data = dre.get_data_request_exchange_html()
     dvo.get_data_viewer_output(data)
+    sde.get_save_data_exchange(data)
     # res = "Привет {}".format(txt.get())
     # lbl.configure(text=res)
 
@@ -18,7 +19,7 @@ def exchange_html():
 def exchange_api():
     data = dre.get_data_request_exchange_api()
     dvo.get_data_viewer_output(data)
-
+    sde.get_save_data_exchange(data)
 
 def exchange_convert():
     print("В разработке")
@@ -35,8 +36,8 @@ btn = Button(window, width=40, text="Запрос html (сайт rbc)", command=
 btn.pack(side=TOP, padx=10, pady=10)
 btn1 = Button(window, width=40, text="Запрос api (сайт ...)", command=exchange_api)  
 btn1.pack(side=TOP, padx=10, pady=10)
-btn1 = Button(window, width=40, text="Перевод валют", command=exchange_convert)  
-btn1.pack(side=TOP, padx=10, pady=10)
+btn2 = Button(window, width=40, text="Перевод валют", command=exchange_convert)  
+btn2.pack(side=TOP, padx=10, pady=10)
 
 window.mainloop()
 
