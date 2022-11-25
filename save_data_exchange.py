@@ -39,7 +39,7 @@ def get_save_data_exchange(data):
       header_file_csv.insert(0, date_now)
       path_csv = ''
       path_csv="save_data_for_api.csv"
-   print(path_csv)
+   
    path = pathlib.Path(path_csv)  # путь к файлу
    # проверка существование файла
    if path.exists():
@@ -48,7 +48,8 @@ def get_save_data_exchange(data):
          header = f.readline()
       # print(header)
       if ('Код,Курс,Единиц' in header) or ('Код валюты,Курс' in header):
-         a_save_data(data_exchange, path_csv)
+
+         a_save_data(data_exchange, path_csv, header_file_csv)
       else:
          a_save_data(data_exchange, path_csv, header_file_csv)
    else:
