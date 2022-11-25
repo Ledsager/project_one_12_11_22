@@ -6,7 +6,7 @@ def get_data_viewer_output(data):
 
     date_now = dt.now().strftime('%Y-%m-%d %H:%M')
     root = tkinter.Tk()
-    root.title(f'Курс валют ЦБ РФ на сегодня - {date_now}')
+    root.title(f'Курс валют на сегодня - {date_now}')
     frame_color ='#4ca8ff' # палитра или рал цвета
 
     #r and c tell us where to grid the labels/r и c указывают нам место расположения меток
