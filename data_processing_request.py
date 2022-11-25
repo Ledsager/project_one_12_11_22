@@ -1,65 +1,37 @@
-import csv
 from tkinter import ttk
 from tkinter.messagebox import showerror
 from tkinter.ttk import Combobox
 import pandas as pd
 from tkinter import *
 
-import requests
-
-def data_processing_request():
-    data=[['USD', 60.3866], ['EUR', 62.7814], ['KZT', 13.0523], ['TRY', 3.2426], ['UZS', 53.808], ['AZN', 35.5215]]
-    window = Tk()  
-    window.title("Добро пожаловать в приложение PythonRu")  
-    window.geometry('400x250')  
-    combo1 = Combobox(window)
-    combo2 = Combobox(window)  
-    combo1['values'] = data[0:] # (1, 2, 3, 4, 5, "Текст")  
-    combo2['values'] = data[0:] # 1, 2, 3, 4, 5, "Текст")
-    combo1.current(1)  # установите вариант по умолчанию  
-    combo2.current(2)
-    combo1.pack(side=LEFT)
-    combo2.pack(side=RIGHT)
-
-    window.mainloop()
-
-# data_processing_request()  
-# API_KEY = 'fa5dec1241aa18580ecb2909'
-# url = f'https://v6.exchangerate-api.com/v6/{API_KEY}/latest/USD'
-
-
-# response = requests.get(f'{url}').json()
-# currencies = dict(response['conversion_rates'])
-
-# with open('meintest.csv', 'w', newline='') as csvfile:
-#     header_key = ['Currency', 'Exchange Rate']
-#     new_val = csv.DictWriter(csvfile, fieldnames=header_key)
-
-#     new_val.writeheader()
-#     for new_k in currencies:
-#         new_val.writerow({'Currency': new_k, 'Exchange Rate': currencies[new_k]})  
 
 def convert_currency():
-    print(data)
-    # will execute the code when everything is ok
+    data=[['USD', 60.3866], ['EUR', 62.7814], ['KZT', 13.0523], ['TRY', 3.2426], ['UZS', 53.808], ['AZN', 35.5215]]
+    # 
     try:
-        # getting currency from first combobox
-        source = [i[1] for i in data if from_currency_combo.get() == i[0]]
-        # for i in data:
-        #     print (from_currency_combo.get())
-        # getting currency from second combobox
+        # 
+        source = from_currency_combo.get()
+        # source_f = [i[1] for i in data if dvo.from_currency_combo.get() == i[0]]
+        source_f = [i[1] for i in data if source == i[0]]
+
+        
         destination = to_currency_combo.get()
-        # getting amound from amount_entry
+        # destination_f = [i[1] for i in data if dvo.to_currency_combo.get() == i[0]]
+        destination_f = [i[1] for i in data if destination == i[0]]
+        # 
         amount = amount_entry.get()
-        print(amount)
-        print(destination)
-        print(source)
-        # formatted_result = f'{amount} {source} = {converted_result} {destination}'
-        # adding text to the empty result label
-        # result = (source / destination) * amount
-        result_label.config(text='расчет тут')
-    # will catch all the errors that might occur
-    # ConnectionTimeOut, JSONDecodeError etc
+        # amount_f = float(dvo.amount_entry.get())
+        amount_f = float(amount)
+        
+        result = (source_f[0] / destination_f[0]) * amount_f
+
+        print(amount_f)
+        print(destination_f)
+        print(source_f)
+        formatted_result = f'{amount} {source} = {result} {destination}'
+        print(formatted_result)
+        # выводим результат в окно конвертора
+        result_label.config(text=formatted_result)
     except:
         showerror(title='Ошибка',
                   message="An error occurred!!. Fill all the required field or check your internet connection.")
@@ -135,3 +107,4 @@ quit_button = Button(bottom_frame, text='Выход', bg=optional, fg=white, fon
 quit_button.place(x=235, y=165)
 
 window.mainloop()
+
