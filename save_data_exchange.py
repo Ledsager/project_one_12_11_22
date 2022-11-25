@@ -5,7 +5,7 @@ import pathlib
 
 
 def a_save_data(data, path, header_file_csv=None):
-   # print (path)
+   
    if header_file_csv == None:
       with open(path, 'a', newline='', encoding='utf-8') as f:
          writer = csv.writer(f)
@@ -28,15 +28,18 @@ def get_save_data_exchange(data):
    for list_element in data_exchange:
       list_element.insert(0, '')
      
-   if len(data_exchange[0])>2:
+   if len(data_exchange[0])>3:
       header_file_csv = ['Код', 'Курс', 'Единиц']
       header_file_csv.insert(0, date_now)
+      path_csv = ''
       path_csv="save_data_for_html.csv"
-   elif len(data_exchange[0]) > 1:
+
+   else: # len(data_exchange[0]) > 2:
       header_file_csv = ['Код валюты', 'Курс']
       header_file_csv.insert(0, date_now)
+      path_csv = ''
       path_csv="save_data_for_api.csv"
-
+   print(path_csv)
    path = pathlib.Path(path_csv)  # путь к файлу
    # проверка существование файла
    if path.exists():
@@ -49,6 +52,6 @@ def get_save_data_exchange(data):
       else:
          a_save_data(data_exchange, path_csv, header_file_csv)
    else:
-      a_save_data(data_exchange, path_csv,header_file_csv)
+      a_save_data(data_exchange, path_csv, header_file_csv)
 
 # get_save_data_exchange()

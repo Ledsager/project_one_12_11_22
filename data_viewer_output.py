@@ -1,11 +1,7 @@
 import tkinter
-import csv
 from datetime import datetime as dt
 from tkinter import *
-
-def exchange_convert_t():
-    print("В разработке")
-    pass
+from tkinter import ttk
 
 
 def get_data_viewer_output(data):
@@ -30,7 +26,4 @@ def get_data_viewer_output(data):
             lbl.grid(column=c, row=r)
             c += 1
         r += 1
-    txt = Entry(root,width=20)
-    # txt = Button(root, width=40, text="Перевод валют", command=exchange_convert_t)  
-    # txt.grid(column=c+1, row=r+10)
     root.mainloop()
