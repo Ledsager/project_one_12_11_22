@@ -6,6 +6,7 @@ from tkinter import *
 
 
 def convert_currency():
+
     data=[['USD', 60.3866], ['EUR', 62.7814], ['KZT', 13.0523], ['TRY', 3.2426], ['UZS', 53.808], ['AZN', 35.5215]]
     # 
     try:
@@ -36,75 +37,82 @@ def convert_currency():
         showerror(title='Ошибка',
                   message="An error occurred!!. Fill all the required field or check your internet connection.")
 
+def main_test(data=None):
+    global  from_currency_combo
+    global to_currency_combo
+    global amount_entry
+    global result_label
+    window = Tk()
+    window.geometry('300x300+500+200')
+    data=[['USD', 60.3866], ['EUR', 62.7814], ['KZT', 13.0523], ['TRY', 3.2426], ['UZS', 53.808], ['AZN', 35.5215]]
 
-window = Tk()
-window.geometry('300x300+500+200')
-data=[['USD', 60.3866], ['EUR', 62.7814], ['KZT', 13.0523], ['TRY', 3.2426], ['UZS', 53.808], ['AZN', 35.5215]]
+    # df = pd.DataFrame(data)[0].tolist()
+    # print(df)
 
-# df = pd.DataFrame(data)[0].tolist()
-# print(df)
+    window.title('Перевод валют')
+    # фиксируем размер окна
+    window.resizable(height=FALSE, width=FALSE)
 
-window.title('Перевод валют')
-# фиксируем размер окна
-window.resizable(height=FALSE, width=FALSE)
-
-primary = '#C1C1FF'
-secondary = '#0083FF'
-white = '#FFFFFF'
-optional = '#ff4800'
-
-
-top_frame = Frame(window, bg=primary, width=300, height=80)
-top_frame.grid(row=0, column=0)
-
-
-name_label = Label(top_frame, text='Перевод валют', bg=primary, fg=white, pady=30, padx=24, justify=CENTER,
-                   font=('Poppins 20 bold'))
-name_label.grid(row=0, column=0)
+    primary = '#C1C1FF'
+    secondary = '#0083FF'
+    white = '#FFFFFF'
+    optional = '#ff4800'
 
 
-bottom_frame = Frame(window, width=300, height=250)
-bottom_frame.grid(row=1, column=0)
+    top_frame = Frame(window, bg=primary, width=300, height=80)
+    top_frame.grid(row=0, column=0)
 
 
-from_currency_label = Label(bottom_frame, text='Какая валюта:', font=('Poppins 10 bold'), justify=LEFT)
-from_currency_label.place(x=5, y=10)
-
-to_currency_label = Label(bottom_frame, text='В какую:', font=('Poppins 10 bold'), justify=RIGHT)
-to_currency_label.place(x=160, y=10)
+    name_label = Label(top_frame, text='Перевод валют', bg=primary, fg=white, pady=30, padx=24, justify=CENTER,
+                    font=('Poppins 20 bold'))
+    name_label.grid(row=0, column=0)
 
 
-from_currency_combo = ttk.Combobox(bottom_frame, values=pd.DataFrame(data)[0].tolist(), width=14, font=('Poppins 10 bold'))
-from_currency_combo.place(x=5, y=30)
+    bottom_frame = Frame(window, width=300, height=250)
+    bottom_frame.grid(row=1, column=0)
 
 
-to_currency_combo = ttk.Combobox(bottom_frame, values=pd.DataFrame(data)[0].tolist(), width=14, font=('Poppins 10 bold'))
-to_currency_combo.place(x=160, y=30)
+    from_currency_label = Label(bottom_frame, text='Какая валюта:', font=('Poppins 10 bold'), justify=LEFT)
+    from_currency_label.place(x=5, y=10)
+
+    to_currency_label = Label(bottom_frame, text='В какую:', font=('Poppins 10 bold'), justify=RIGHT)
+    to_currency_label.place(x=160, y=10)
 
 
-amount_label = Label(bottom_frame, text='Количество валюты:', font=('Poppins 10 bold'))
-amount_label.place(x=5, y=55)
+    from_currency_combo = ttk.Combobox(bottom_frame, values=pd.DataFrame(data)[0].tolist(), width=14, font=('Poppins 10 bold'))
+    from_currency_combo.place(x=5, y=30)
 
 
-amount_entry = Entry(bottom_frame, width=25, font=('Poppins 15 bold'))
-amount_entry.place(x=5, y=80)
+    to_currency_combo = ttk.Combobox(bottom_frame, values=pd.DataFrame(data)[0].tolist(), width=14, font=('Poppins 10 bold'))
+    to_currency_combo.place(x=160, y=30)
 
 
-result_label = Label(bottom_frame, text='', font=('Poppins 10 bold'))
-result_label.place(x=5, y=115)
+    amount_label = Label(bottom_frame, text='Количество валюты:', font=('Poppins 10 bold'))
+    amount_label.place(x=5, y=55)
 
 
-time_label = Label(bottom_frame, text='', font=('Poppins 10 bold'))
-time_label.place(x=5, y=135)
+    amount_entry = Entry(bottom_frame, width=25, font=('Poppins 15 bold'))
+    amount_entry.place(x=5, y=80)
 
 
-convert_button = Button(bottom_frame, text="Расчитать", bg=secondary, fg=white, font=('Poppins 10 bold'),
-                        command=convert_currency)
-convert_button.place(x=5, y=165)
+    result_label = Label(bottom_frame, text='', font=('Poppins 10 bold'))
+    result_label.place(x=5, y=115)
 
-quit_button = Button(bottom_frame, text='Выход', bg=optional, fg=white, font=('Poppins 10 bold'),
-                     command=window.destroy)
-quit_button.place(x=235, y=165)
 
-window.mainloop()
+    time_label = Label(bottom_frame, text='', font=('Poppins 10 bold'))
+    time_label.place(x=5, y=135)
+
+
+    convert_button = Button(bottom_frame, text="Расчитать", bg=secondary, fg=white, font=('Poppins 10 bold'),
+                            command=convert_currency)
+    convert_button.place(x=5, y=165)
+
+    quit_button = Button(bottom_frame, text='Выход', bg=optional, fg=white, font=('Poppins 10 bold'),
+                        command=window.destroy)
+    quit_button.place(x=235, y=165)
+
+    window.mainloop()
+
+if __name__== '__main__':
+    main_test()
 

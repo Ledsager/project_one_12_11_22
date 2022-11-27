@@ -18,9 +18,9 @@ def exchange_api():
     sde.get_save_data_exchange(data)
 
 def exchange_convert():
-    
+    dpr.main_test()
     print("В разработке(готов но не подключен)")
-    pass
+    # pass
 
 
 def button_menu():
