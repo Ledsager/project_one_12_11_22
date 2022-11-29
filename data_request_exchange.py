@@ -16,7 +16,7 @@ def get_data_request_exchange_html():
    sdel.get_save_data_exchange_log()
    return data_fr_out
 
-def get_data_request_exchange_api():
+def get_data_request_exchange_api()->list:
    API_KEY = 'fa5dec1241aa18580ecb2909'
    url = f'https://v6.exchangerate-api.com/v6/{API_KEY}/latest/RUB'
    # запрос api в формате json
