@@ -1,27 +1,58 @@
-import tkinter
-import csv
-from datetime import datetime as dt
+import os
+from dotenv import load_dotenv
 
-time_now = dt.now().strftime('%H:%M')
-date_now = dt.now().strftime('%Y-%m-%d %H:%M')
-root = tkinter.Tk()
-root.title(f'Курс валют ЦБ РФ на сегодня - {date_now}')
-frame_color ='#4ca8ff' # палитра или рал цвета
+import logging
 
-# open file
-with open("save_data_exchange.csv", newline = "", encoding='utf-8') as file:
-   reader = csv.reader(file)
+from telegram import Update
+from telegram.ext import Updater, ApplicationBuilder, CommandHandler, ContextTypes
 
-   # r and c tell us where to grid the labels/r и c указывают нам место расположения меток
-   r = 0
-   for col in reader:
-      c = 0
-      for row in col:
-        #добавил стиль в меню и цвет
-         label = tkinter.Label(root, width = 20, height = 2, \
-                               text = row, relief = tkinter.RIDGE, bg=frame_color)
-         label.grid(row = r, column = c)
-         c += 1
-      r += 1
+# from exchange_bot import *
+# from viewer_bot import *
+# from scrapper import db_action, get_data
 
-root.mainloop()
+load_dotenv()
+secret_token = os.getenv('TOKEN')
+
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO
+)
+
+def main():
+
+
+    updater = Updater(token=secret_token)
+
+    # updater.dispatcher.add_handler(CommandHandler("exch", command_exch))
+    # updater.dispatcher.add_handler(CommandHandler("rate", command_rate))
+    # updater.dispatcher.add_handler(CommandHandler("help", command_help))
+    # app.add_handler(CommandHandler("hello", command_exch))
+
+
+    print('Server run')
+    updater.start_polling()
+    updater.idle()
+
+if __name__ == '__main__':
+    main()
+
+from telegram import Update
+from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, Updater
+
+
+def command_exch(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+    update.message.reply_text(f'перевод валют')
+
+def command_help(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+    update.message.reply_text(f'/exch - перевод валют\n/rate - курс валют\n/help\n') 
+
+
+from telegram import Update
+from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, Updater
+
+
+def command_rate(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+    update.message.reply_text(f'rate ready')   
