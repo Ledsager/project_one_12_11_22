@@ -7,11 +7,10 @@ from tkinter import *
 
 
 def convert_currency():
-
+    # data=[['USD', 60.3866], ['EUR', 62.7814], ['KZT', 13.0523], ['TRY', 3.2426], ['UZS', 53.808], ['AZN', 35.5215]]
     
-    # data = [['USD', 60.3866], ['EUR', 62.7814], ['KZT', 13.0523],
-    #         ['TRY', 3.2426], ['UZS', 53.808], ['AZN', 35.5215]]
-    #
+    # 
+
     try:
         data = dre.get_data_request_exchange_api()
         # data = data_exchange.get()
