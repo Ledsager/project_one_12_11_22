@@ -399,5 +399,5 @@ FodyWeavers.xsd
 
 # My project python
 *.csv
-folder/
+folder/*
 *.env
