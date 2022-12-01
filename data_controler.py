@@ -4,23 +4,26 @@ import data_request_exchange as dre
 import save_data_exchange as sde
 import data_viewer_output as dvo
 import data_processing_request as dpr
-from tkinter import *  
-  
-  
+from tkinter import *
+
+
 def exchange_html():
     data = dre.get_data_request_exchange_html()
     dvo.get_data_viewer_output(data)
     sde.get_save_data_exchange(data)
+
 
 def exchange_api():
     data = dre.get_data_request_exchange_api()
     dvo.get_data_viewer_output(data)
     sde.get_save_data_exchange(data)
 
+
 def exchange_convert():
-    
-    print("В разработке(готов но не подключен)")
-    pass
+    data = dre.get_data_request_exchange_api()
+    dpr.main_test(data)
+    print("В доработке")
+    # pass
 
 
 def button_menu():
@@ -45,4 +48,3 @@ def button_menu():
     quit_button.pack(side=TOP, padx=10, pady=10)
 
     window.mainloop()
-
