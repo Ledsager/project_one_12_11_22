@@ -1,5 +1,5 @@
 from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, Updater
+from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 from datetime import datetime as dt
 
 
@@ -25,21 +25,15 @@ async def command_rate(update: Update, context: ContextTypes.DEFAULT_TYPE):
         header_file_csv.insert(0, date_now)
 
     res = [*[header_file_csv], *data]
-    print(res)
+    # print(res)
     # r и c указывают нам место расположения меток
-    r = 0
-    for col in res:
-        c = 0
-        for row in col:
+    # r = 0
+    # for col in res:
+    #     c = 0
+    #     for row in col:
             # добавил стиль в меню и цвет
-            print(row)
-            lbl = Label(root, width=20, height=2,
-                        text=row, relief=RIDGE, bg=frame_color)
-            # label = Label(root, width = 20, height = 2, \
-            #   text = row, relief = RIDGE, bg=frame_color)
-            lbl.grid(column=c, row=r)
-            c += 1
-        r += 1
+            # print(row)
+            
 
 
 
