@@ -1,5 +1,5 @@
 from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, Updater
+from telegram.ext import ApplicationBuilder, ContextTypes, Updater
 
 
 async def command_exch(update: Update, context: ContextTypes.DEFAULT_TYPE):
