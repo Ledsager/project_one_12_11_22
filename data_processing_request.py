@@ -27,7 +27,7 @@ def convert_currency():
         # amount_f = float(dvo.amount_entry.get())
         amount_f = float(amount)
 
-        result = (source_f[0] / destination_f[0]) * amount_f
+        result = ((destination_f[0] / source_f[0]))* amount_f
 
         print(amount_f)
         print(destination_f)
